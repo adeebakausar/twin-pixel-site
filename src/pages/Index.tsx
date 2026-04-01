@@ -1,7 +1,12 @@
-import { Shield, Clock, Users, Award } from "lucide-react";
+import { Shield, Clock, Users, Award, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import heroBg from "@/assets/hero-bg.jpg";
 import aboutImg from "@/assets/about-image.jpg";
+import serviceTree from "@/assets/service-tree.jpg";
+import serviceLand from "@/assets/service-landclearing.jpg";
+import serviceDrainage from "@/assets/service-drainage.jpg";
+import serviceRemoval from "@/assets/service-removal.jpg";
+import serviceLogging from "@/assets/service-logging.jpg";
 import gallery1 from "@/assets/gallery-1.jpg";
 import gallery2 from "@/assets/gallery-2.jpg";
 import gallery3 from "@/assets/gallery-3.jpg";
@@ -13,7 +18,6 @@ import gallery8 from "@/assets/gallery-8.jpg";
 import gallery9 from "@/assets/gallery-9.jpg";
 import gallery10 from "@/assets/gallery-10.jpg";
 import QuoteForm from "@/components/QuoteForm";
-import ServiceCard from "@/components/ServiceCard";
 
 const stats = [
   { icon: <Clock className="w-6 h-6" />, label: "30+ Years Tree Industry Experience" },
@@ -23,11 +27,11 @@ const stats = [
 ];
 
 const homeServices = [
-  { title: "Tree Service", description: "Professional tree removal, pruning, and stump grinding services in Lancaster County, PA.", link: "/tree-service", iconKey: "tree-service" },
-  { title: "Land Clearing Service", description: "Professional land clearing and grading services in Lancaster County, PA for property development and construction.", link: "/land-clearing", iconKey: "land-clearing" },
-  { title: "Drainage Service", description: "Professional drainage service in Lancaster County for water management and erosion control.", link: "/drainage", iconKey: "drainage" },
-  { title: "Tree Removal", description: "Tree removal in Lancaster County, PA. Professional hazardous tree removal, stump grinding, emergency services. Free estimate—call now.", link: "/tree-service/tree-removal", iconKey: "tree-removal" },
-  { title: "Logging", description: "Logging and tree removal in Lancaster County, PA. Safe, professional service with land restoration. Call for a free estimate today.", link: "/tree-service/logging", iconKey: "logging" },
+  { title: "Tree Service", image: serviceTree, link: "/tree-service" },
+  { title: "Land Clearing Service", image: serviceLand, link: "/land-clearing" },
+  { title: "Drainage Service", image: serviceDrainage, link: "/drainage" },
+  { title: "Tree Removal", image: serviceRemoval, link: "/tree-service/tree-removal" },
+  { title: "Logging", image: serviceLogging, link: "/tree-service/logging" },
 ];
 
 const galleryImages = [
@@ -51,22 +55,6 @@ const faqs = [
   { q: "Can BH Tree Service clear land for new construction in Delaware County?", a: "Yes, we perform full land clearing and grading for development projects in Delaware County. We also handle drainage and erosion control to prepare your site for building." },
   { q: "What's the first step to book tree pruning in Lancaster County?", a: "Call BH Tree Service to describe your trees and schedule a time that fits your calendar in Lancaster County. We'll confirm your appointment and arrive ready to work." },
 ];
-
-const WaveDividerTop = () => (
-  <div className="w-full leading-[0] overflow-hidden">
-    <svg viewBox="0 0 1440 100" preserveAspectRatio="none" className="w-full h-[50px] md:h-[70px] block">
-      <path d="M0,0 L0,40 Q360,100 720,40 Q1080,-20 1440,40 L1440,0 Z" fill="white" />
-    </svg>
-  </div>
-);
-
-const WaveDividerBottom = () => (
-  <div className="w-full leading-[0] overflow-hidden">
-    <svg viewBox="0 0 1440 100" preserveAspectRatio="none" className="w-full h-[50px] md:h-[70px] block">
-      <path d="M0,60 Q360,0 720,60 Q1080,120 1440,60 L1440,100 L0,100 Z" fill="white" />
-    </svg>
-  </div>
-);
 
 const Index = () => {
   return (
@@ -119,67 +107,95 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Services Section */}
-      <section className="section-padding bg-secondary">
+      {/* Services Section - Image Cards */}
+      <section className="section-padding bg-background">
         <div className="container-wide">
-          <p className="font-heading text-sm uppercase tracking-widest text-primary text-center mb-2">What We Are Best At</p>
-          <h2 className="font-heading text-3xl md:text-4xl font-bold uppercase text-center text-foreground mb-12">Our Services</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {homeServices.map((s) => (
-              <ServiceCard key={s.link} {...s} />
+          <div className="mb-8">
+            <div className="inline-block bg-foreground text-background font-heading text-xs font-bold uppercase tracking-wider px-3 py-1.5 mb-2">
+              What We Are Best At
+            </div>
+            <div className="flex items-center gap-4">
+              <h2 className="font-heading text-3xl md:text-4xl font-bold uppercase text-foreground">Our Services</h2>
+              <div className="hidden md:block h-[3px] flex-1 bg-primary max-w-[200px]" />
+            </div>
+          </div>
+
+          {/* Top row: 3 cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+            {homeServices.slice(0, 3).map((s) => (
+              <Link key={s.link} to={s.link} className="group relative overflow-hidden rounded-lg aspect-[4/3]">
+                <img src={s.image} alt={s.title} loading="lazy" width={800} height={512} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                <div className="absolute top-3 left-3">
+                  <span className="bg-foreground text-background font-heading text-xs font-bold uppercase tracking-wider px-2.5 py-1">
+                    {s.title}
+                  </span>
+                </div>
+                <div className="absolute bottom-4 left-4 flex items-center gap-1.5 text-primary-foreground font-heading text-sm font-bold uppercase tracking-wide group-hover:text-primary transition-colors">
+                  View More <ArrowRight className="w-4 h-4" />
+                </div>
+              </Link>
+            ))}
+          </div>
+
+          {/* Bottom row: 2 cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {homeServices.slice(3).map((s) => (
+              <Link key={s.link} to={s.link} className="group relative overflow-hidden rounded-lg aspect-[4/3]">
+                <img src={s.image} alt={s.title} loading="lazy" width={800} height={512} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                <div className="absolute top-3 left-3">
+                  <span className="bg-foreground text-background font-heading text-xs font-bold uppercase tracking-wider px-2.5 py-1">
+                    {s.title}
+                  </span>
+                </div>
+                <div className="absolute bottom-4 left-4 flex items-center gap-1.5 text-primary-foreground font-heading text-sm font-bold uppercase tracking-wide group-hover:text-primary transition-colors">
+                  View More <ArrowRight className="w-4 h-4" />
+                </div>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Gallery / See Our Work Section */}
-      <div className="relative">
-        <div
-          className="relative bg-cover bg-center bg-fixed"
-          style={{ backgroundImage: `url(${heroBg})` }}
-        >
-          <div className="absolute inset-0 bg-[hsl(var(--hero-overlay))]/40" />
-          <WaveDividerTop />
-          <div className="relative z-10 px-4 pt-4 pb-16 md:pb-20">
-            <div className="max-w-6xl mx-auto">
-              {/* Header */}
-              <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-10">
-                <div>
-                  <p className="font-heading text-sm uppercase tracking-widest text-primary-foreground/80 mb-2">
-                    See Why Our Customers Love Us
-                  </p>
-                  <h2 className="font-heading text-3xl md:text-4xl font-bold uppercase text-primary-foreground">
-                    See Our Work
-                  </h2>
-                </div>
-                <Link
-                  to="/gallery"
-                  className="mt-4 md:mt-0 inline-block bg-primary text-primary-foreground font-heading text-sm font-bold px-8 py-3 rounded hover:opacity-90 transition-opacity uppercase tracking-wide"
-                >
-                  See All Photos
-                </Link>
+      {/* See Our Work - Masonry Gallery */}
+      <section className="section-padding bg-background">
+        <div className="container-wide">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-8">
+            <div>
+              <div className="inline-block bg-foreground text-background font-heading text-xs font-bold uppercase tracking-wider px-3 py-1.5 mb-2">
+                See Why Our Customers Love Us
               </div>
-
-              {/* Photo Grid */}
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
-                {galleryImages.map((img, i) => (
-                  <div key={i} className="overflow-hidden rounded-lg aspect-square group">
-                    <img
-                      src={img.src}
-                      alt={img.alt}
-                      loading="lazy"
-                      width={800}
-                      height={600}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                  </div>
-                ))}
+              <div className="flex items-center gap-4">
+                <h2 className="font-heading text-3xl md:text-4xl font-bold uppercase text-foreground">See Our Work</h2>
+                <div className="hidden md:block h-[3px] flex-1 bg-primary max-w-[200px]" />
               </div>
             </div>
+            <Link
+              to="/gallery"
+              className="mt-4 md:mt-0 inline-flex items-center gap-2 bg-foreground text-background font-heading text-xs font-bold uppercase px-5 py-2.5 rounded-sm hover:bg-primary hover:text-primary-foreground transition-colors tracking-wider"
+            >
+              See All Photos <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
           </div>
-          <WaveDividerBottom />
+
+          {/* Masonry-style grid */}
+          <div className="columns-2 md:columns-3 lg:columns-4 gap-3 space-y-3">
+            {galleryImages.map((img, i) => (
+              <div key={i} className="break-inside-avoid overflow-hidden rounded-lg group">
+                <img
+                  src={img.src}
+                  alt={img.alt}
+                  loading="lazy"
+                  width={800}
+                  height={600}
+                  className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
+      </section>
 
       {/* FAQ Section */}
       <section className="section-padding bg-secondary">
