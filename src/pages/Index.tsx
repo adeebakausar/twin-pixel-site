@@ -64,10 +64,13 @@ const faqs = [
 ];
 
 const Index = () => {
-  const [reviewPage, setReviewPage] = useState(0);
-  const reviewsPerPage = 3;
-  const totalPages = Math.ceil(googleReviews.length / reviewsPerPage);
-  const visibleReviews = googleReviews.slice(reviewPage * reviewsPerPage, (reviewPage + 1) * reviewsPerPage);
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://reputationhub.site/reputation/assets/review-widget.js';
+    script.type = 'text/javascript';
+    document.body.appendChild(script);
+    return () => { document.body.removeChild(script); };
+  }, []);
 
   return (
     <div>
