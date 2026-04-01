@@ -64,18 +64,7 @@ const TreeService = () => {
         </div>
       </section>
 
-      {/* Reviews */}
-      <section className="section-padding">
-        <div className="container-wide">
-          <p className="font-heading text-sm uppercase tracking-widest text-primary text-center mb-2">Discover What Our Customers Have to Say</p>
-          <h2 className="font-heading text-3xl font-bold uppercase text-center text-foreground mb-12">Reviews</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {reviews.map((r, i) => (
-              <ReviewCard key={i} {...r} />
-            ))}
-          </div>
-        </div>
-      </section>
+      <ReviewsSection />
     </div>
   );
 };

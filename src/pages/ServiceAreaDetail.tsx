@@ -40,6 +40,7 @@ const ServiceAreaDetail = () => {
           </div>
         </div>
       </section>
+      <ReviewsSection />
     </div>
   );
 };

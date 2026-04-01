@@ -50,6 +50,7 @@ const Contact = () => {
           </div>
         </div>
       </section>
+      <ReviewsSection />
     </div>
   );
 };

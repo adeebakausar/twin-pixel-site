@@ -34,6 +34,7 @@ const Drainage = () => {
           </div>
         </div>
       </section>
+      <ReviewsSection />
     </div>
   );
 };

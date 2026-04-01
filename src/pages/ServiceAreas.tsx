@@ -35,6 +35,7 @@ const ServiceAreas = () => {
           </div>
         </div>
       </section>
+      <ReviewsSection />
     </div>
   );
 };

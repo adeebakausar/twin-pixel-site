@@ -33,6 +33,7 @@ const LandClearing = () => {
           </div>
         </div>
       </section>
+      <ReviewsSection />
     </div>
   );
 };

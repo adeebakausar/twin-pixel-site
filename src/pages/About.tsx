@@ -50,6 +50,7 @@ const About = () => {
           </div>
         </div>
       </section>
+      <ReviewsSection />
     </div>
   );
 };

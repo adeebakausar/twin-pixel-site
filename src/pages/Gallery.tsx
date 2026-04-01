@@ -28,6 +28,7 @@ const Gallery = () => {
           </div>
         </div>
       </section>
+      <ReviewsSection />
     </div>
   );
 };

@@ -82,6 +82,7 @@ const ServiceDetail = () => {
           </div>
         </div>
       </section>
+      <ReviewsSection />
     </div>
   );
 };
