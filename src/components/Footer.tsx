@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import { Phone, ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
+import { Phone, ArrowRight } from "lucide-react";
 import { FaGoogle } from "react-icons/fa";
-import { useState } from "react";
+import { useEffect } from "react";
 import logo from "@/assets/logo.png";
 import heroBg from "@/assets/hero-bg.jpg";
 
