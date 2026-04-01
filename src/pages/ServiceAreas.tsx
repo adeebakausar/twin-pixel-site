@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import HeroSection from "@/components/HeroSection";
+import ReviewsSection from "@/components/ReviewsSection";
 import heroBg from "@/assets/hero-bg.jpg";
 
 const allAreas = [
