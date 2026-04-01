@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import HeroSection from "@/components/HeroSection";
 import ServiceCard from "@/components/ServiceCard";
+import ReviewsSection from "@/components/ReviewsSection";
 import heroBg from "@/assets/hero-bg.jpg";
 
 const ServiceAreaDetail = () => {
