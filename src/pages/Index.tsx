@@ -1,7 +1,6 @@
-import { Shield, Clock, Users, Award, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { Shield, Clock, Users, Award, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useState } from "react";
-import { FaGoogle } from "react-icons/fa";
+import { useEffect } from "react";
 import heroBg from "@/assets/hero-bg.jpg";
 import aboutImg from "@/assets/about-image.jpg";
 import serviceTree from "@/assets/service-tree.jpg";
@@ -49,17 +48,6 @@ const galleryImages = [
   { src: gallery10, alt: "Tree service in Bucks County, PA" },
 ];
 
-const googleReviews = [
-  { name: "Taylor S", text: "Cannot thank these guys enough for cutting down a huge oak directly behind my house and on a mountain, even with all the negatives surrounding the location these guys made it look easy!! Would recommend them for all of your tree needs!" },
-  { name: "Kau G", text: "Was very happy with Cody and his crew. They were very professional, had good communication to set up the work and completed everything perfectly as expected." },
-  { name: "Monica Flamini", text: "Highly recommend for any needed tree/stump removal services. The team was professional and made quick and efficient work of the very large pine tree we needed removed. Customer service was top tier with timely responses." },
-  { name: "Taurean", text: "BH Tree Service was a recommendation, and CODY did not disappoint! Amazing job, quick and professional service. Thank you too Melissa! They worked with my schedule and the price was affordable, easy pay methods!" },
-  { name: "Pat V", text: "Cody did a great job removing a very large tree near my house. They worked quickly and efficiently wrapping up the job in only 2 hours. They cleaned up everything before they left so it was like they were never there." },
-  { name: "Bob Powers", text: "Cody and his Team did a TERRIFIC job. Cody is very knowledgeable, very honest, and very hard working. Integrity and Honesty mean a great deal to me. Cody did exactly what he promised to do at a very fair price." },
-  { name: "Chris Nosser", text: "Cody and team always come through for me at a very fair price. Had a tree fall and hit the house, they were out the next morning to get it taken care of and even took out a few other questionable trees." },
-  { name: "Bill Loesel", text: "Cody and Casey were called in by our insurance agent - arrived less than 3 hours after the storm knocked most of a large tree into the driveway and somewhat on the house. They got it off the house and cut it all up in no time!" },
-  { name: "Alyssia Lamazza", text: "I had an exceptional experience with BH Tree Service! From the moment I reached out for a quote, their team was responsive and professional. The crew arrived on time and efficiently removed the tree from my yard." },
-];
 
 const servingAreas = [
   "Berks County, PA", "Bucks County, PA", "Carbon County, PA", "Chester County, PA",
@@ -76,10 +64,13 @@ const faqs = [
 ];
 
 const Index = () => {
-  const [reviewPage, setReviewPage] = useState(0);
-  const reviewsPerPage = 3;
-  const totalPages = Math.ceil(googleReviews.length / reviewsPerPage);
-  const visibleReviews = googleReviews.slice(reviewPage * reviewsPerPage, (reviewPage + 1) * reviewsPerPage);
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://reputationhub.site/reputation/assets/review-widget.js';
+    script.type = 'text/javascript';
+    document.body.appendChild(script);
+    return () => { document.body.removeChild(script); };
+  }, []);
 
   return (
     <div>
@@ -225,54 +216,15 @@ const Index = () => {
             </Link>
           </div>
 
-          {/* Review Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            {visibleReviews.map((review, i) => (
-              <div key={i} className="bg-card border border-border rounded-lg p-6">
-                <div className="flex items-center gap-2 mb-1">
-                  <span className="font-heading font-bold text-card-foreground">{review.name}</span>
-                  <FaGoogle className="w-4 h-4 text-primary" />
-                </div>
-                <div className="flex gap-0.5 mb-3">
-                  {[...Array(5)].map((_, j) => (
-                    <span key={j} className="text-yellow-400 text-sm">★</span>
-                  ))}
-                </div>
-                <p className="text-muted-foreground text-sm leading-relaxed">{review.text}</p>
-              </div>
-            ))}
-          </div>
-
-          {/* Pagination */}
-          <div className="flex items-center justify-center gap-3">
-            <button
-              onClick={() => setReviewPage(Math.max(0, reviewPage - 1))}
-              disabled={reviewPage === 0}
-              className="p-2 rounded-full border border-border hover:bg-muted transition-colors disabled:opacity-30"
-            >
-              <ChevronLeft className="w-5 h-5 text-foreground" />
-            </button>
-            {[...Array(totalPages)].map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setReviewPage(i)}
-                className={`w-8 h-8 rounded-full font-heading text-sm font-bold transition-colors ${
-                  i === reviewPage
-                    ? "bg-primary text-primary-foreground"
-                    : "border border-border text-muted-foreground hover:bg-muted"
-                }`}
-              >
-                {i + 1}
-              </button>
-            ))}
-            <button
-              onClick={() => setReviewPage(Math.min(totalPages - 1, reviewPage + 1))}
-              disabled={reviewPage === totalPages - 1}
-              className="p-2 rounded-full border border-border hover:bg-muted transition-colors disabled:opacity-30"
-            >
-              <ChevronRight className="w-5 h-5 text-foreground" />
-            </button>
-          </div>
+          {/* Review Widget */}
+          <iframe
+            className="lc_reviews_widget"
+            src="https://reputationhub.site/reputation/widgets/review_widget/6V45N8I3W9GiHwA5iEDb"
+            frameBorder="0"
+            scrolling="no"
+            style={{ minWidth: '100%', width: '100%' }}
+            title="Customer Reviews"
+          />
         </div>
       </section>
 
