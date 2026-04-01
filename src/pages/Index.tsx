@@ -196,21 +196,41 @@ const Index = () => {
       </section>
 
       {/* Reviews Section */}
-      <section className="section-padding bg-secondary">
-        <div className="container-wide">
+      <section className="relative py-20 overflow-hidden">
+        {/* Background image */}
+        <div className="absolute inset-0">
+          <img src={gallery3} alt="" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-black/50" />
+        </div>
+
+        {/* Top wave */}
+        <div className="absolute top-0 left-0 w-full overflow-hidden leading-none">
+          <svg viewBox="0 0 1440 80" preserveAspectRatio="none" className="w-full h-16 md:h-20">
+            <path d="M0,0 L0,40 Q360,80 720,40 Q1080,0 1440,40 L1440,0 Z" fill="hsl(var(--background))" />
+          </svg>
+        </div>
+
+        {/* Bottom wave */}
+        <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none rotate-180">
+          <svg viewBox="0 0 1440 80" preserveAspectRatio="none" className="w-full h-16 md:h-20">
+            <path d="M0,0 L0,40 Q360,80 720,40 Q1080,0 1440,40 L1440,0 Z" fill="hsl(var(--background))" />
+          </svg>
+        </div>
+
+        <div className="relative z-10 container-wide pt-8">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-10">
             <div>
               <div className="inline-block bg-foreground text-background font-heading text-xs font-bold uppercase tracking-wider px-3 py-1.5 mb-2">
                 Discover What Our Customers Have To Say About Us
               </div>
               <div className="flex items-center gap-4">
-                <h2 className="font-heading text-3xl md:text-4xl font-bold uppercase text-foreground">Reviews</h2>
+                <h2 className="font-heading text-3xl md:text-4xl font-bold uppercase text-white">Reviews</h2>
                 <div className="hidden md:block h-[3px] flex-1 bg-primary max-w-[200px]" />
               </div>
             </div>
             <Link
               to="/review-us"
-              className="mt-4 md:mt-0 inline-flex items-center gap-2 bg-foreground text-background font-heading text-xs font-bold uppercase px-5 py-2.5 rounded-sm hover:bg-primary hover:text-primary-foreground transition-colors tracking-wider"
+              className="mt-4 md:mt-0 inline-flex items-center gap-2 bg-background text-foreground font-heading text-xs font-bold uppercase px-5 py-2.5 rounded-sm hover:bg-primary hover:text-primary-foreground transition-colors tracking-wider border-2 border-foreground"
             >
               Leave a Review <ArrowRight className="w-3.5 h-3.5" />
             </Link>
