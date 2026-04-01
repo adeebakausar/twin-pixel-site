@@ -6,29 +6,34 @@ const QuoteForm = () => {
 
   const [submitting, setSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
-    const url = "https://services.leadconnectorhq.com/hooks/6V45N8I3W9GiHwA5iEDb/webhook-trigger/fb49ad74-c80c-4570-8cd7-93891a000c9a";
-    const xhr = new XMLHttpRequest();
-    xhr.open("POST", url, true);
-    xhr.setRequestHeader("Content-Type", "application/json");
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState === 4) {
-        setSubmitting(false);
-        alert("Thank you! We'll get back to you soon.");
-        setForm({ name: "", phone: "", message: "", agreed: false });
-      }
-    };
-    xhr.onerror = function () {
-      setSubmitting(false);
+
+    const fullName = form.name;
+    const phone = form.phone;
+    const message = form.message;
+
+    try {
+      const response = await fetch(
+        "https://services.leadconnectorhq.com/hooks/6V45N8I3W9GiHwA5iEDb/webhook-trigger/fb49ad74-c80c-4570-8cd7-93891a000c9a",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ name: fullName, phone: phone, message: message }),
+        }
+      );
+      console.log("Webhook response status:", response.status);
+      alert("Thank you! We'll get back to you soon.");
+      setForm({ name: "", phone: "", message: "", agreed: false });
+    } catch (err) {
+      console.error("Webhook error:", err);
       alert("Something went wrong. Please try again or call us directly.");
-    };
-    xhr.send(JSON.stringify({
-      name: form.name,
-      phone: form.phone,
-      message: form.message,
-    }));
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
