@@ -4,10 +4,24 @@ import logo from "@/assets/logo.png";
 const QuoteForm = () => {
   const [form, setForm] = useState({ name: "", phone: "", message: "", agreed: false });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [submitting, setSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    alert("Thank you! We'll get back to you soon.");
-    setForm({ name: "", phone: "", message: "", agreed: false });
+    setSubmitting(true);
+    try {
+      await fetch("https://services.leadconnectorhq.com/hooks/6V45N8I3W9GiHwA5iEDb/webhook-trigger/fb49ad74-c80c-4570-8cd7-93891a000c9a", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: form.name, phone: form.phone, message: form.message }),
+      });
+      alert("Thank you! We'll get back to you soon.");
+      setForm({ name: "", phone: "", message: "", agreed: false });
+    } catch {
+      alert("Something went wrong. Please try again or call us directly.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -68,9 +82,10 @@ const QuoteForm = () => {
         </p>
         <button
           type="submit"
-          className="w-full bg-primary text-primary-foreground font-heading text-xl font-bold py-4 rounded-md hover:opacity-90 transition-opacity uppercase tracking-wider"
+          disabled={submitting}
+          className="w-full bg-primary text-primary-foreground font-heading text-xl font-bold py-4 rounded-md hover:opacity-90 transition-opacity uppercase tracking-wider disabled:opacity-60"
         >
-          Send
+          {submitting ? "Sending..." : "Send"}
         </button>
       </form>
     </div>
