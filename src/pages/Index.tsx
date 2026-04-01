@@ -2,9 +2,18 @@ import { Shield, Clock, Users, Award } from "lucide-react";
 import { Link } from "react-router-dom";
 import heroBg from "@/assets/hero-bg.jpg";
 import aboutImg from "@/assets/about-image.jpg";
+import gallery1 from "@/assets/gallery-1.jpg";
+import gallery2 from "@/assets/gallery-2.jpg";
+import gallery3 from "@/assets/gallery-3.jpg";
+import gallery4 from "@/assets/gallery-4.jpg";
+import gallery5 from "@/assets/gallery-5.jpg";
+import gallery6 from "@/assets/gallery-6.jpg";
+import gallery7 from "@/assets/gallery-7.jpg";
+import gallery8 from "@/assets/gallery-8.jpg";
+import gallery9 from "@/assets/gallery-9.jpg";
+import gallery10 from "@/assets/gallery-10.jpg";
 import QuoteForm from "@/components/QuoteForm";
 import ServiceCard from "@/components/ServiceCard";
-import ReviewCard from "@/components/ReviewCard";
 
 const stats = [
   { icon: <Clock className="w-6 h-6" />, label: "30+ Years Tree Industry Experience" },
@@ -15,34 +24,49 @@ const stats = [
 
 const homeServices = [
   { title: "Tree Service", description: "Professional tree removal, pruning, and stump grinding services in Lancaster County, PA.", link: "/tree-service", iconKey: "tree-service" },
-  { title: "Land Clearing Service", description: "Professional land clearing and grading services in Lancaster County, PA for property development.", link: "/land-clearing", iconKey: "land-clearing" },
+  { title: "Land Clearing Service", description: "Professional land clearing and grading services in Lancaster County, PA for property development and construction.", link: "/land-clearing", iconKey: "land-clearing" },
   { title: "Drainage Service", description: "Professional drainage service in Lancaster County for water management and erosion control.", link: "/drainage", iconKey: "drainage" },
-  { title: "Tree Removal", description: "Professional hazardous tree removal, stump grinding, emergency services. Free estimate.", link: "/tree-service/tree-removal", iconKey: "tree-removal" },
-  { title: "Logging", description: "Logging and tree removal in Lancaster County, PA. Safe, professional service with land restoration.", link: "/tree-service/logging", iconKey: "logging" },
+  { title: "Tree Removal", description: "Tree removal in Lancaster County, PA. Professional hazardous tree removal, stump grinding, emergency services. Free estimate—call now.", link: "/tree-service/tree-removal", iconKey: "tree-removal" },
+  { title: "Logging", description: "Logging and tree removal in Lancaster County, PA. Safe, professional service with land restoration. Call for a free estimate today.", link: "/tree-service/logging", iconKey: "logging" },
 ];
 
-const reviews = [
-  { name: "Taylor S", text: "Cannot thank these guys enough for cutting down a huge oak directly behind my house and on a mountain, even with all the negatives surrounding the location these guys made it look easy!! Would recommend them for all of your tree needs!" },
-  { name: "Kau G", text: "Was very happy with Cody and his crew. They were very professional, had good communication to set up the work and completed everything perfectly as expected." },
-  { name: "Monica Flamini", text: "Highly recommend for any needed tree/stump removal services. The team was professional and made quick and efficient work of the very large pine tree we needed removed. Customer service was top tier." },
-  { name: "Pat V", text: "Cody did a great job removing a very large tree near my house. They worked quickly and efficiently wrapping up the job in only 2 hours. They cleaned up everything before they left." },
-  { name: "Bob Powers", text: "Cody and his Team did a TERRIFIC job. Cody is very knowledgeable, very honest, and very hard working. He did exactly what he promised at a very fair price." },
-  { name: "Chris Nosser", text: "Cody and team always come through for me at a very fair price. Had a tree fall and hit the house, they were out the next morning to get it taken care of." },
+const galleryImages = [
+  { src: gallery1, alt: "Tree removal in Lancaster County, PA" },
+  { src: gallery2, alt: "Stump grinding in Lancaster County, PA" },
+  { src: gallery3, alt: "Land clearing project in Lancaster County, PA" },
+  { src: gallery4, alt: "Emergency tree removal in Lancaster County, PA" },
+  { src: gallery5, alt: "Tree pruning in Lancaster County, PA" },
+  { src: gallery6, alt: "Firewood stacking in Lancaster County, PA" },
+  { src: gallery7, alt: "Drainage installation in Lancaster County, PA" },
+  { src: gallery8, alt: "Land clearing with excavator in Lancaster County, PA" },
+  { src: gallery9, alt: "Completed tree service in Lancaster County, PA" },
+  { src: gallery10, alt: "Logging service in Lancaster County, PA" },
 ];
 
 const faqs = [
-  { q: "How quickly can BH Tree Service remove a tree?", a: "We can schedule tree removal appointments within a few days for most customers. Contact us today to book your removal and get a timeline that works for your schedule." },
-  { q: "What happens after you grind a stump?", a: "After stump grinding, the area is left clear and ready for new landscaping or lawn growth. We haul away debris so your property is clean and ready to use." },
-  { q: "Do you offer emergency tree services?", a: "Yes, BH Tree Service provides emergency tree removal and cleanup 24/7 for storm damage and hazardous trees. Call us right away if you have a fallen or dangerous tree." },
-  { q: "Do I need a permit for tree removal?", a: "Permit requirements vary by municipality; we confirm what's needed and handle the paperwork for you." },
-  { q: "Can you prune trees near power lines?", a: "Yes, we work safely around utilities and follow all local codes for clearance and trimming near power lines." },
-  { q: "How do I prepare my yard for tree removal?", a: "Clear the area around the tree and mark any fragile plants or structures you want protected. Our crew will handle the rest." },
+  { q: "How quickly can BH Tree Service remove a tree in Berks County?", a: "We can schedule tree removal appointments within a few days for most customers in Berks County. Contact us today to book your removal and get a timeline that works for your schedule." },
+  { q: "What happens after you grind a stump in Bucks County?", a: "After stump grinding in Bucks County, the area is left clear and ready for new landscaping or lawn growth. We haul away debris so your property is clean and ready to use." },
+  { q: "Do you offer emergency tree services in Carbon County?", a: "Yes, BH Tree Service provides emergency tree removal and cleanup in Carbon County 24/7 for storm damage and hazardous trees. Call us right away if you have a fallen or dangerous tree." },
+  { q: "How do I prepare my yard for tree removal in Chester County?", a: "Clear the area around the tree and mark any fragile plants or structures you want protected in Chester County. Our crew will handle the rest and clean up when we're done." },
+  { q: "Can BH Tree Service clear land for new construction in Delaware County?", a: "Yes, we perform full land clearing and grading for development projects in Delaware County. We also handle drainage and erosion control to prepare your site for building." },
+  { q: "What's the first step to book tree pruning in Lancaster County?", a: "Call BH Tree Service to describe your trees and schedule a time that fits your calendar in Lancaster County. We'll confirm your appointment and arrive ready to work." },
 ];
 
-const serviceAreas = [
-  "Berks County", "Bucks County", "Carbon County", "Chester County",
-  "Delaware County", "Lancaster County", "Lebanon County", "Lehigh County",
-];
+const WaveDividerTop = () => (
+  <div className="w-full leading-[0] overflow-hidden">
+    <svg viewBox="0 0 1440 100" preserveAspectRatio="none" className="w-full h-[50px] md:h-[70px] block">
+      <path d="M0,0 L0,40 Q360,100 720,40 Q1080,-20 1440,40 L1440,0 Z" fill="white" />
+    </svg>
+  </div>
+);
+
+const WaveDividerBottom = () => (
+  <div className="w-full leading-[0] overflow-hidden">
+    <svg viewBox="0 0 1440 100" preserveAspectRatio="none" className="w-full h-[50px] md:h-[70px] block">
+      <path d="M0,60 Q360,0 720,60 Q1080,120 1440,60 L1440,100 L0,100 Z" fill="white" />
+    </svg>
+  </div>
+);
 
 const Index = () => {
   return (
@@ -108,18 +132,54 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Reviews Section */}
-      <section className="section-padding">
-        <div className="container-wide">
-          <p className="font-heading text-sm uppercase tracking-widest text-primary text-center mb-2">Discover What Our Customers Have to Say</p>
-          <h2 className="font-heading text-3xl md:text-4xl font-bold uppercase text-center text-foreground mb-12">Reviews</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {reviews.map((r, i) => (
-              <ReviewCard key={i} {...r} />
-            ))}
+      {/* Gallery / See Our Work Section */}
+      <div className="relative">
+        <div
+          className="relative bg-cover bg-center bg-fixed"
+          style={{ backgroundImage: `url(${heroBg})` }}
+        >
+          <div className="absolute inset-0 bg-[hsl(var(--hero-overlay))]/40" />
+          <WaveDividerTop />
+          <div className="relative z-10 px-4 pt-4 pb-16 md:pb-20">
+            <div className="max-w-6xl mx-auto">
+              {/* Header */}
+              <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-10">
+                <div>
+                  <p className="font-heading text-sm uppercase tracking-widest text-primary-foreground/80 mb-2">
+                    See Why Our Customers Love Us
+                  </p>
+                  <h2 className="font-heading text-3xl md:text-4xl font-bold uppercase text-primary-foreground">
+                    See Our Work
+                  </h2>
+                </div>
+                <Link
+                  to="/gallery"
+                  className="mt-4 md:mt-0 inline-block bg-primary text-primary-foreground font-heading text-sm font-bold px-8 py-3 rounded hover:opacity-90 transition-opacity uppercase tracking-wide"
+                >
+                  See All Photos
+                </Link>
+              </div>
+
+              {/* Photo Grid */}
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
+                {galleryImages.map((img, i) => (
+                  <div key={i} className="overflow-hidden rounded-lg aspect-square group">
+                    <img
+                      src={img.src}
+                      alt={img.alt}
+                      loading="lazy"
+                      width={800}
+                      height={600}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
+          <WaveDividerBottom />
         </div>
-      </section>
+      </div>
 
       {/* FAQ Section */}
       <section className="section-padding bg-secondary">
@@ -135,29 +195,6 @@ const Index = () => {
                 <p className="text-sm text-muted-foreground px-6 pb-4">{faq.a}</p>
               </details>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Service Areas */}
-      <section className="section-padding">
-        <div className="container-wide">
-          <h2 className="font-heading text-2xl font-bold uppercase text-center text-foreground mb-8">Proudly Serving These Areas</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-3xl mx-auto mb-8">
-            {serviceAreas.map((area) => (
-              <Link
-                key={area}
-                to={`/service-areas/${area.toLowerCase().replace(/ /g, "-")}`}
-                className="text-center text-sm font-semibold text-foreground hover:text-primary transition-colors py-2"
-              >
-                {area}, PA
-              </Link>
-            ))}
-          </div>
-          <div className="text-center">
-            <Link to="/service-areas" className="text-primary font-heading font-semibold uppercase tracking-wide hover:underline">
-              View All Service Areas →
-            </Link>
           </div>
         </div>
       </section>
