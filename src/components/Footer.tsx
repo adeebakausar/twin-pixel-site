@@ -10,14 +10,6 @@ const serviceAreas = [
   "Delaware County", "Lancaster County", "Lebanon County", "Lehigh County",
 ];
 
-const reviews = [
-  { name: "Gina Massetti", text: "Cody and his team are absolutely amazing to work with! Everything was so easy and seamless from the estimate, to scheduling, to completing the work.", rating: 5 },
-  { name: "D Nonnenman", text: "BH Tree Service did a fantastic job dropping 5 trees for us. Professionalism was top notch with attention to detail. Appreciated the care taken to pro...", rating: 5 },
-  { name: "Greg Herman", text: "Very fast and reliable service. Took time out of his busy schedule to accommodate me. Very respectful to the property.", rating: 5 },
-  { name: "Sarah Mitchell", text: "Outstanding work! They removed a massive oak tree that was dangerously close to our house. Professional, efficient, and left the yard spotless.", rating: 5 },
-  { name: "Tom Williams", text: "Best tree service in Lancaster County. Fair pricing and excellent communication throughout the entire process. Highly recommend!", rating: 5 },
-  { name: "Jennifer Adams", text: "Called for emergency service after a storm and they were there within hours. Incredible response time and quality work.", rating: 5 },
-];
 
 const WaveDividerTop = () => (
   <div className="w-full leading-[0] overflow-hidden">
