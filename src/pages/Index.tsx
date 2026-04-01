@@ -1,6 +1,7 @@
 import { Shield, Clock, Users, Award, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
+import ReviewsSection from "@/components/ReviewsSection";
 import heroBg from "@/assets/hero-bg.jpg";
 import aboutImg from "@/assets/about-image.jpg";
 import serviceTree from "@/assets/service-tree.jpg";
