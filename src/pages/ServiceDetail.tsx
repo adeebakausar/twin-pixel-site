@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import HeroSection from "@/components/HeroSection";
+import ReviewsSection from "@/components/ReviewsSection";
 import treeServiceHero from "@/assets/tree-service-hero.jpg";
 import { Link } from "react-router-dom";
 
