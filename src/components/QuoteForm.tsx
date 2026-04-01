@@ -10,10 +10,15 @@ const QuoteForm = () => {
     e.preventDefault();
     setSubmitting(true);
     try {
+      const params = new URLSearchParams();
+      params.append("name", form.name);
+      params.append("phone", form.phone);
+      params.append("message", form.message);
       await fetch("https://services.leadconnectorhq.com/hooks/6V45N8I3W9GiHwA5iEDb/webhook-trigger/fb49ad74-c80c-4570-8cd7-93891a000c9a", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name: form.name, phone: form.phone, message: form.message }),
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: params.toString(),
+        mode: "no-cors",
       });
       alert("Thank you! We'll get back to you soon.");
       setForm({ name: "", phone: "", message: "", agreed: false });
