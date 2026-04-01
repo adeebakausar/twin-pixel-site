@@ -30,9 +30,6 @@ const QuoteForm = () => {
       message: form.message,
     }));
   };
-      setSubmitting(false);
-    }
-  };
 
   return (
     <div className="bg-foreground rounded-lg p-6 md:p-8 w-full max-w-md">
