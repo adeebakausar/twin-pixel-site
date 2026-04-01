@@ -16,6 +16,7 @@ import ServiceAreas from "./pages/ServiceAreas.tsx";
 import ServiceAreaDetail from "./pages/ServiceAreaDetail.tsx";
 import ServiceDetail from "./pages/ServiceDetail.tsx";
 import NotFound from "./pages/NotFound.tsx";
+import ReviewUs from "./pages/ReviewUs.tsx";
 
 const queryClient = new QueryClient();
 
@@ -40,6 +41,7 @@ const App = () => (
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/service-areas" element={<ServiceAreas />} />
             <Route path="/service-areas/:area" element={<ServiceAreaDetail />} />
+            <Route path="/review-us" element={<ReviewUs />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>

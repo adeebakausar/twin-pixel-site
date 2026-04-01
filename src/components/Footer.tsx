@@ -66,10 +66,10 @@ const Footer = () => {
                 </div>
               </div>
               <Link
-                to="/contact"
+                to="/review-us"
                 className="mt-4 md:mt-2 inline-flex items-center gap-2 border-2 border-foreground bg-background text-foreground font-heading text-sm font-bold uppercase px-6 py-3 rounded-sm hover:bg-foreground hover:text-background transition-colors"
               >
-                Contact Us Now <ArrowRight className="w-4 h-4" />
+                Leave a Review <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
 
