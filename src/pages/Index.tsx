@@ -48,17 +48,6 @@ const galleryImages = [
   { src: gallery10, alt: "Tree service in Bucks County, PA" },
 ];
 
-const googleReviews = [
-  { name: "Taylor S", text: "Cannot thank these guys enough for cutting down a huge oak directly behind my house and on a mountain, even with all the negatives surrounding the location these guys made it look easy!! Would recommend them for all of your tree needs!" },
-  { name: "Kau G", text: "Was very happy with Cody and his crew. They were very professional, had good communication to set up the work and completed everything perfectly as expected." },
-  { name: "Monica Flamini", text: "Highly recommend for any needed tree/stump removal services. The team was professional and made quick and efficient work of the very large pine tree we needed removed. Customer service was top tier with timely responses." },
-  { name: "Taurean", text: "BH Tree Service was a recommendation, and CODY did not disappoint! Amazing job, quick and professional service. Thank you too Melissa! They worked with my schedule and the price was affordable, easy pay methods!" },
-  { name: "Pat V", text: "Cody did a great job removing a very large tree near my house. They worked quickly and efficiently wrapping up the job in only 2 hours. They cleaned up everything before they left so it was like they were never there." },
-  { name: "Bob Powers", text: "Cody and his Team did a TERRIFIC job. Cody is very knowledgeable, very honest, and very hard working. Integrity and Honesty mean a great deal to me. Cody did exactly what he promised to do at a very fair price." },
-  { name: "Chris Nosser", text: "Cody and team always come through for me at a very fair price. Had a tree fall and hit the house, they were out the next morning to get it taken care of and even took out a few other questionable trees." },
-  { name: "Bill Loesel", text: "Cody and Casey were called in by our insurance agent - arrived less than 3 hours after the storm knocked most of a large tree into the driveway and somewhat on the house. They got it off the house and cut it all up in no time!" },
-  { name: "Alyssia Lamazza", text: "I had an exceptional experience with BH Tree Service! From the moment I reached out for a quote, their team was responsive and professional. The crew arrived on time and efficiently removed the tree from my yard." },
-];
 
 const servingAreas = [
   "Berks County, PA", "Bucks County, PA", "Carbon County, PA", "Chester County, PA",
