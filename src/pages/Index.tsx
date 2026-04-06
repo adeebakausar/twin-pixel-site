@@ -1,4 +1,4 @@
-import { Shield, Clock, Users, Award, ArrowRight } from "lucide-react";
+import { Shield, Clock, Users, Award, ArrowRight, Phone, ClipboardList, Settings, CheckCircle, DollarSign } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import ReviewsSection from "@/components/ReviewsSection";
@@ -28,6 +28,14 @@ const homeServices = [
   { title: "MEP Services", image: serviceMep, link: "/services/mep-services" },
 ];
 
+const processSteps = [
+  { icon: <Phone className="w-8 h-8" />, title: "Consultation", desc: "Contact us and discuss your project needs" },
+  { icon: <ClipboardList className="w-8 h-8" />, title: "Assessment", desc: "We evaluate your site and requirements" },
+  { icon: <Settings className="w-8 h-8" />, title: "Execution", desc: "Our expert team completes the work" },
+  { icon: <CheckCircle className="w-8 h-8" />, title: "Quality Check", desc: "Rigorous inspection and testing" },
+  { icon: <DollarSign className="w-8 h-8" />, title: "Handover", desc: "Project delivered on time and budget" },
+];
+
 const faqs = [
   { q: "What MEP services does SplendorUAE offer?", a: "We provide comprehensive MEP solutions including CHW piping fabrication & installation, HVAC system installation, valve package installation, heat exchanger setup, ductwork systems, and complete mechanical, electrical, and plumbing services." },
   { q: "How long has SplendorUAE been in the industry?", a: "With over 15 years of experience in the MEP and HVAC industry, we have completed 500+ successful projects across the UAE for commercial and residential clients." },
@@ -48,7 +56,7 @@ const Index = () => {
 
   return (
     <div>
-      {/* Hero Section */}
+      {/* Hero Section — full-screen, text left + form right */}
       <section className="relative min-h-screen flex items-center">
         <div className="absolute inset-0">
           <img src={heroBg} alt="SplendorUAE MEP & HVAC" className="w-full h-full object-cover" width={1920} height={1080} />
@@ -81,59 +89,65 @@ const Index = () => {
         </div>
       </section>
 
-      {/* About Section */}
+      {/* About Section — image left, text right (Venice style) */}
       <section className="section-padding">
         <div className="container-wide flex flex-col lg:flex-row items-center gap-12">
           <div className="flex-1">
-            <p className="font-heading text-sm uppercase tracking-widest text-primary mb-2">About Us</p>
-            <p className="font-body text-muted-foreground leading-relaxed">
-              Founded in 2009, SplendorUAE began as a small team of passionate engineers with a vision to revolutionize MEP and HVAC services in the UAE. Today, we stand as a leading service provider with over 500 successful projects, serving commercial and residential clients across all emirates.
-            </p>
+            <img src={aboutImg} alt="SplendorUAE Team" className="rounded-lg shadow-xl w-full" loading="lazy" width={1024} height={768} />
           </div>
           <div className="flex-1">
-            <img src={aboutImg} alt="SplendorUAE Team" className="rounded-lg shadow-xl w-full" loading="lazy" width={1024} height={768} />
+            <p className="font-heading text-sm uppercase tracking-widest text-primary mb-2">About Us</p>
+            <h2 className="font-heading text-3xl md:text-4xl font-bold uppercase text-foreground mb-4">Who We Are</h2>
+            <p className="font-body text-muted-foreground leading-relaxed mb-6">
+              Founded in 2009, SplendorUAE began as a small team of passionate engineers with a vision to revolutionize MEP and HVAC services in the UAE. Today, we stand as a leading service provider with over 500 successful projects, serving commercial and residential clients across all emirates.
+            </p>
+            <Link to="/about" className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-heading text-sm font-bold px-8 py-3 rounded hover:opacity-90 transition-opacity uppercase tracking-wide">
+              Learn More <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* Services Section */}
-      <section className="section-padding bg-background">
-        <div className="container-wide">
-          <div className="mb-8">
-            <div className="inline-block bg-foreground text-background font-heading text-xs font-bold uppercase tracking-wider px-3 py-1.5 mb-2">
-              Expert Solutions
-            </div>
-            <div className="flex items-center gap-4">
-              <h2 className="font-heading text-3xl md:text-4xl font-bold uppercase text-foreground">Our Services</h2>
-              <div className="hidden md:block h-[3px] flex-1 bg-primary max-w-[200px]" />
-            </div>
+      {/* Services Section — tight grid, no gaps, Venice-style */}
+      <section className="bg-primary py-12 md:py-16">
+        <div className="container-wide px-4">
+          <div className="flex items-center gap-4 mb-8">
+            <h2 className="font-heading text-3xl md:text-4xl font-bold uppercase text-primary-foreground">Our Services</h2>
+            <div className="hidden md:block h-[3px] flex-1 bg-primary-foreground/30 max-w-[300px]" />
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-            {homeServices.slice(0, 3).map((s) => (
-              <Link key={s.link} to={s.link} className="group relative overflow-hidden rounded-lg aspect-[4/3]">
+          <div className="grid grid-cols-1 md:grid-cols-3">
+            {homeServices.map((s) => (
+              <Link key={s.link} to={s.link} className="group relative overflow-hidden aspect-[4/3]">
                 <img src={s.image} alt={s.title} loading="lazy" width={800} height={600} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                <div className="absolute top-3 left-3">
-                  <span className="bg-foreground text-background font-heading text-xs font-bold uppercase tracking-wider px-2.5 py-1">{s.title}</span>
-                </div>
-                <div className="absolute bottom-4 left-4 flex items-center gap-1.5 text-primary-foreground font-heading text-sm font-bold uppercase tracking-wide group-hover:text-primary transition-colors">
-                  View More <ArrowRight className="w-4 h-4" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                <div className="absolute bottom-4 left-4">
+                  <span className="bg-foreground text-background font-heading text-sm font-bold uppercase tracking-wider px-3 py-1.5 inline-flex items-center gap-1.5">
+                    {s.title} <ArrowRight className="w-4 h-4" />
+                  </span>
                 </div>
               </Link>
             ))}
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {homeServices.slice(3).map((s) => (
-              <Link key={s.link} to={s.link} className="group relative overflow-hidden rounded-lg aspect-[4/3]">
-                <img src={s.image} alt={s.title} loading="lazy" width={800} height={600} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                <div className="absolute top-3 left-3">
-                  <span className="bg-foreground text-background font-heading text-xs font-bold uppercase tracking-wider px-2.5 py-1">{s.title}</span>
+        </div>
+      </section>
+
+      {/* Our Process — horizontal timeline (Venice style) */}
+      <section className="section-padding bg-background">
+        <div className="container-wide">
+          <div className="flex items-center gap-4 mb-2">
+            <h2 className="font-heading text-3xl md:text-4xl font-bold uppercase text-foreground">Our Process</h2>
+            <div className="hidden md:block h-[3px] flex-1 bg-primary max-w-[300px]" />
+          </div>
+          <p className="text-muted-foreground mb-12">Our process is simple and delivers results every time</p>
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
+            {processSteps.map((step, i) => (
+              <div key={i} className="flex flex-col items-center text-center">
+                <div className="w-20 h-20 rounded-full border-2 border-primary flex items-center justify-center text-primary mb-4">
+                  {step.icon}
                 </div>
-                <div className="absolute bottom-4 left-4 flex items-center gap-1.5 text-primary-foreground font-heading text-sm font-bold uppercase tracking-wide group-hover:text-primary transition-colors">
-                  View More <ArrowRight className="w-4 h-4" />
-                </div>
-              </Link>
+                <h3 className="font-heading text-sm font-bold uppercase text-foreground mb-1">{step.title}</h3>
+                <p className="text-xs text-muted-foreground">{step.desc}</p>
+              </div>
             ))}
           </div>
         </div>
@@ -141,8 +155,11 @@ const Index = () => {
 
       {/* Why Choose Us */}
       <section className="section-padding bg-secondary">
-        <div className="container-wide text-center">
-          <h2 className="font-heading text-3xl md:text-4xl font-bold uppercase text-foreground mb-12">Why Choose SplendorUAE?</h2>
+        <div className="container-wide">
+          <div className="flex items-center gap-4 mb-12">
+            <h2 className="font-heading text-3xl md:text-4xl font-bold uppercase text-foreground">Why Choose SplendorUAE?</h2>
+            <div className="hidden md:block h-[3px] flex-1 bg-primary max-w-[200px]" />
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               { title: "15+ Years Experience", desc: "Over a decade and half of expertise in MEP and HVAC solutions across the UAE market." },
@@ -163,20 +180,25 @@ const Index = () => {
 
       <ReviewsSection />
 
-      {/* FAQ Section */}
+      {/* FAQ Section — two-column: questions left, image right (Venice style) */}
       <section className="section-padding bg-background">
-        <div className="container-wide max-w-3xl">
-          <h2 className="font-heading text-3xl md:text-4xl font-bold uppercase text-center text-foreground mb-12">Frequently Asked Questions</h2>
-          <div className="space-y-4">
-            {faqs.map((faq, i) => (
-              <details key={i} className="bg-card border border-border rounded-lg group">
-                <summary className="font-heading font-bold text-card-foreground px-6 py-4 cursor-pointer hover:text-primary transition-colors list-none flex items-center justify-between">
-                  {faq.q}
-                  <span className="text-primary text-xl group-open:rotate-45 transition-transform">+</span>
-                </summary>
-                <p className="text-sm text-muted-foreground px-6 pb-4">{faq.a}</p>
-              </details>
-            ))}
+        <div className="container-wide flex flex-col lg:flex-row gap-12">
+          <div className="flex-1">
+            <h2 className="font-heading text-3xl md:text-4xl font-bold uppercase text-foreground mb-8">Frequently Asked Questions</h2>
+            <div className="space-y-3">
+              {faqs.map((faq, i) => (
+                <details key={i} className="border-b border-border group">
+                  <summary className="font-heading font-bold text-foreground py-4 cursor-pointer hover:text-primary transition-colors list-none flex items-center justify-between">
+                    {faq.q}
+                    <span className="text-primary text-xl group-open:rotate-45 transition-transform flex-shrink-0 ml-4">+</span>
+                  </summary>
+                  <p className="text-sm text-muted-foreground pb-4">{faq.a}</p>
+                </details>
+              ))}
+            </div>
+          </div>
+          <div className="flex-1 hidden lg:block">
+            <img src={aboutImg} alt="SplendorUAE MEP Services" className="w-full h-full object-cover rounded-lg" loading="lazy" />
           </div>
         </div>
       </section>
