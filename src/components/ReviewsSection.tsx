@@ -47,7 +47,7 @@ const ReviewsSection = () => {
           <div className="max-w-6xl mx-auto">
             <iframe
               className="lc_reviews_widget"
-              src="https://reputationhub.site/reputation/widgets/review_widget/6V45N8I3W9GiHwA5iEDb"
+              src="https://reputationhub.site/reputation/widgets/review_widget/VpYniePP1Eyh1VyKfkYG"
               frameBorder="0"
               scrolling="no"
               style={{ minWidth: '100%', width: '100%' }}
