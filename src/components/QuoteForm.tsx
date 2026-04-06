@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import logo from "@/assets/logo.png";
 
 const QuoteForm = () => {
+  const navigate = useNavigate();
   const [form, setForm] = useState({ name: "", phone: "", message: "", agreed: false });
   const [submitting, setSubmitting] = useState(false);
 
