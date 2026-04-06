@@ -27,8 +27,8 @@ const QuoteForm = () => {
         }
       );
       console.log("Webhook response status:", response.status);
-      alert("Thank you! We'll get back to you soon.");
       setForm({ name: "", phone: "", message: "", agreed: false });
+      navigate("/thank-you");
     } catch (err) {
       console.error("Webhook error:", err);
       alert("Something went wrong. Please try again or call us directly.");
