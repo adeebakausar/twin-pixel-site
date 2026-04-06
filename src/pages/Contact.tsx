@@ -1,16 +1,16 @@
 import HeroSection from "@/components/HeroSection";
 import QuoteForm from "@/components/QuoteForm";
 import ReviewsSection from "@/components/ReviewsSection";
-import treeServiceHero from "@/assets/tree-service-hero.jpg";
-import { Phone, MapPin, Clock } from "lucide-react";
+import heroBg from "@/assets/hero-bg.jpg";
+import { Phone, MapPin, Clock, Mail } from "lucide-react";
 
 const Contact = () => {
   return (
     <div>
       <HeroSection
         title="Contact Us"
-        subtitle="Get in touch for a free quote on tree removal, land clearing, or drainage services."
-        backgroundImage={treeServiceHero}
+        subtitle="Ready to discuss your MEP and HVAC project? Our expert team is here to help."
+        backgroundImage={heroBg}
         showCTA={false}
       />
 
@@ -19,28 +19,41 @@ const Contact = () => {
           <div className="flex-1">
             <h2 className="font-heading text-3xl font-bold uppercase text-foreground mb-6">Get In Touch</h2>
             <p className="text-muted-foreground mb-8">
-              Ready to get started? Fill out the form or give us a call. We'll get back to you as soon as possible with a free estimate.
+              Ready to discuss your project? Fill out the form or contact us directly. Our expert team will assess your requirements and provide a tailored MEP/HVAC solution.
             </p>
             <div className="space-y-6">
               <div className="flex items-start gap-4">
                 <Phone className="w-6 h-6 text-primary mt-1" />
                 <div>
                   <h3 className="font-heading font-bold text-foreground">Phone</h3>
-                  <a href="tel:16103245372" className="text-muted-foreground hover:text-primary transition-colors">(610) 324-5372</a>
+                  <a href="tel:+971501234567" className="text-muted-foreground hover:text-primary transition-colors">+971 50 123 4567</a>
+                  <br />
+                  <a href="tel:+97145678901" className="text-muted-foreground hover:text-primary transition-colors">+971 4 567 8901</a>
+                </div>
+              </div>
+              <div className="flex items-start gap-4">
+                <Mail className="w-6 h-6 text-primary mt-1" />
+                <div>
+                  <h3 className="font-heading font-bold text-foreground">Email</h3>
+                  <a href="mailto:info@splendoruae.com" className="text-muted-foreground hover:text-primary transition-colors">info@splendoruae.com</a>
+                  <br />
+                  <a href="mailto:projects@splendoruae.com" className="text-muted-foreground hover:text-primary transition-colors">projects@splendoruae.com</a>
                 </div>
               </div>
               <div className="flex items-start gap-4">
                 <MapPin className="w-6 h-6 text-primary mt-1" />
                 <div>
-                  <h3 className="font-heading font-bold text-foreground">Service Area</h3>
-                  <p className="text-muted-foreground">Lancaster County, PA & surrounding counties</p>
+                  <h3 className="font-heading font-bold text-foreground">Location</h3>
+                  <p className="text-muted-foreground">Business Bay, Dubai, UAE</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
                 <Clock className="w-6 h-6 text-primary mt-1" />
                 <div>
-                  <h3 className="font-heading font-bold text-foreground">Hours</h3>
-                  <p className="text-muted-foreground">24/7 Emergency Services Available</p>
+                  <h3 className="font-heading font-bold text-foreground">Working Hours</h3>
+                  <p className="text-muted-foreground">Mon - Fri: 8:00 AM - 6:00 PM</p>
+                  <p className="text-muted-foreground">Saturday: 8:00 AM - 2:00 PM</p>
+                  <p className="text-muted-foreground">Sunday: Closed</p>
                 </div>
               </div>
             </div>

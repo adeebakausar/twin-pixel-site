@@ -4,9 +4,8 @@ import ReviewsSection from "@/components/ReviewsSection";
 import heroBg from "@/assets/hero-bg.jpg";
 
 const allAreas = [
-  "Berks County", "Bucks County", "Carbon County", "Chester County",
-  "Delaware County", "Lancaster County", "Lebanon County", "Lehigh County",
-  "Monroe County", "Montgomery County", "Northampton County", "Schuylkill County",
+  "Dubai", "Abu Dhabi", "Sharjah", "Ajman",
+  "Ras Al Khaimah", "Fujairah", "Umm Al Quwain",
 ];
 
 const ServiceAreas = () => {
@@ -14,7 +13,7 @@ const ServiceAreas = () => {
     <div>
       <HeroSection
         title="Service Areas"
-        subtitle="BH Tree Service proudly serves communities across Eastern Pennsylvania."
+        subtitle="SplendorUAE proudly serves clients across all emirates in the UAE."
         backgroundImage={heroBg}
         showCTA={false}
       />
@@ -29,7 +28,7 @@ const ServiceAreas = () => {
                 to={`/service-areas/${area.toLowerCase().replace(/ /g, "-")}`}
                 className="bg-card border border-border rounded-lg p-6 text-center hover:shadow-lg hover:border-primary transition-all group"
               >
-                <h3 className="font-heading text-lg font-bold uppercase text-card-foreground group-hover:text-primary transition-colors">{area}, PA</h3>
+                <h3 className="font-heading text-lg font-bold uppercase text-card-foreground group-hover:text-primary transition-colors">{area}</h3>
               </Link>
             ))}
           </div>

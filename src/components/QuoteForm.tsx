@@ -3,7 +3,6 @@ import logo from "@/assets/logo.png";
 
 const QuoteForm = () => {
   const [form, setForm] = useState({ name: "", phone: "", message: "", agreed: false });
-
   const [submitting, setSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -39,10 +38,10 @@ const QuoteForm = () => {
   return (
     <div className="bg-foreground rounded-lg p-6 md:p-8 w-full max-w-md">
       <div className="flex justify-center mb-4">
-        <img src={logo} alt="BH Tree Service" className="h-14 w-auto" />
+        <img src={logo} alt="SplendorUAE" className="h-14 w-auto" />
       </div>
       <h3 className="font-heading text-xl font-bold text-center text-background uppercase tracking-wide mb-6">
-        Get a Free Quote
+        Get a Free Consultation
       </h3>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
@@ -60,17 +59,17 @@ const QuoteForm = () => {
           <label className="block text-sm font-semibold text-background mb-1">Phone</label>
           <input
             type="tel"
-            placeholder="(808) 555-1234"
+            placeholder="+971 50 123 4567"
             value={form.phone}
             onChange={(e) => setForm({ ...form, phone: e.target.value })}
             className="w-full px-4 py-2.5 rounded-md bg-background text-foreground text-sm border-0 focus:ring-2 focus:ring-primary"
           />
         </div>
         <div>
-          <label className="block text-sm font-semibold text-background mb-1">Short message about your needs *</label>
+          <label className="block text-sm font-semibold text-background mb-1">Project Details *</label>
           <textarea
             required
-            placeholder="**Your message goes straight to my phone, I'll get back to you as soon as I'm available**"
+            placeholder="Tell us about your MEP/HVAC project requirements..."
             value={form.message}
             onChange={(e) => setForm({ ...form, message: e.target.value })}
             rows={3}

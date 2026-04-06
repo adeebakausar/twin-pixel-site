@@ -7,37 +7,37 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 0 0% 13%;
+    --foreground: 220 50% 11%;
 
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 13%;
+    --card-foreground: 220 50% 11%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 13%;
+    --popover-foreground: 220 50% 11%;
 
-    --primary: 145 63% 32%;
+    --primary: 40 70% 50%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 0 0% 96%;
-    --secondary-foreground: 0 0% 13%;
+    --secondary: 220 30% 96%;
+    --secondary-foreground: 220 50% 11%;
 
-    --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 45%;
+    --muted: 220 20% 96%;
+    --muted-foreground: 220 10% 45%;
 
-    --accent: 145 63% 32%;
+    --accent: 40 70% 50%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 90%;
-    --input: 0 0% 90%;
-    --ring: 145 63% 32%;
+    --border: 220 15% 90%;
+    --input: 220 15% 90%;
+    --ring: 40 70% 50%;
 
     --radius: 0.5rem;
 
-    --hero-overlay: 0 0% 0%;
-    --section-dark: 0 0% 13%;
+    --hero-overlay: 220 50% 11%;
+    --section-dark: 220 50% 11%;
     --section-dark-foreground: 0 0% 100%;
 
     --sidebar-background: 0 0% 98%;
@@ -51,25 +51,25 @@
   }
 
   .dark {
-    --background: 0 0% 7%;
+    --background: 220 50% 7%;
     --foreground: 0 0% 95%;
-    --card: 0 0% 10%;
+    --card: 220 50% 10%;
     --card-foreground: 0 0% 95%;
-    --popover: 0 0% 10%;
+    --popover: 220 50% 10%;
     --popover-foreground: 0 0% 95%;
-    --primary: 145 63% 42%;
+    --primary: 40 70% 55%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 0 0% 15%;
+    --secondary: 220 30% 15%;
     --secondary-foreground: 0 0% 95%;
-    --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 65%;
-    --accent: 145 63% 42%;
+    --muted: 220 20% 15%;
+    --muted-foreground: 220 10% 65%;
+    --accent: 40 70% 55%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 62% 30%;
     --destructive-foreground: 0 0% 95%;
-    --border: 0 0% 20%;
-    --input: 0 0% 20%;
-    --ring: 145 63% 42%;
+    --border: 220 20% 20%;
+    --input: 220 20% 20%;
+    --ring: 40 70% 55%;
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -109,7 +109,7 @@
   }
 
   .hero-overlay {
-    @apply absolute inset-0 bg-hero-overlay/60;
+    @apply absolute inset-0 bg-hero-overlay/70;
   }
 
   .wave-divider {
