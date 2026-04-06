@@ -6,9 +6,6 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Index from "./pages/Index.tsx";
-import TreeService from "./pages/TreeService.tsx";
-import LandClearing from "./pages/LandClearing.tsx";
-import Drainage from "./pages/Drainage.tsx";
 import About from "./pages/About.tsx";
 import Contact from "./pages/Contact.tsx";
 import Gallery from "./pages/Gallery.tsx";
@@ -32,12 +29,7 @@ const App = () => (
         <main className="pt-[72px]">
           <Routes>
             <Route path="/" element={<Index />} />
-            <Route path="/tree-service" element={<TreeService />} />
-            <Route path="/tree-service/:slug" element={<ServiceDetail />} />
-            <Route path="/land-clearing" element={<LandClearing />} />
-            <Route path="/land-clearing/:slug" element={<ServiceDetail />} />
-            <Route path="/drainage" element={<Drainage />} />
-            <Route path="/drainage/:slug" element={<ServiceDetail />} />
+            <Route path="/services/:slug" element={<ServiceDetail />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/gallery" element={<Gallery />} />

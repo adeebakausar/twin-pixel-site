@@ -1,62 +1,51 @@
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import HeroSection from "@/components/HeroSection";
 import ReviewsSection from "@/components/ReviewsSection";
-import treeServiceHero from "@/assets/tree-service-hero.jpg";
-import { Link } from "react-router-dom";
+import heroBg from "@/assets/hero-bg.jpg";
 
-const serviceData: Record<string, { title: string; description: string }> = {
-  "tree-removal": {
-    title: "Tree Removal",
-    description: "Dead, diseased, or hazardous trees pose real danger to your home and family. Our professional tree removal crew safely drops trees of any size, hauls debris, and leaves your property clean. We handle tight spaces, utility lines, and permits.",
+const serviceData: Record<string, { title: string; description: string; features: string[] }> = {
+  "chw-piping": {
+    title: "CHW Piping Fabrication & Installation",
+    description: "Complete chilled water piping systems designed and installed to the highest industry standards. Our experienced team handles custom pipe fabrication, professional installation, testing & commissioning, insulation services, and system optimization for commercial buildings, residential complexes, and industrial facilities.",
+    features: ["Custom pipe fabrication", "Professional installation", "Testing & commissioning", "Insulation services", "System optimization"],
   },
-  "logging": {
-    title: "Logging",
-    description: "Land clearing and timber operations require skill, equipment, and planning. We handle large-scale logging projects, managing site access, equipment placement, and wood removal. From timber harvesting to site prep, we coordinate every detail.",
+  "hvac-installation": {
+    title: "HVAC Installation",
+    description: "Professional HVAC system installation and maintenance for optimal climate control. We provide end-to-end solutions including system design, equipment selection, installation, and ongoing maintenance to ensure your building maintains perfect comfort year-round.",
+    features: ["System design & engineering", "Equipment selection", "Professional installation", "Commissioning", "Preventive maintenance"],
   },
-  "tree-pruning": {
-    title: "Tree Pruning",
-    description: "Pruning keeps trees strong and prevents future problems. Overgrown branches near homes and power lines become liabilities. Regular trimming improves tree health, opens views, and protects your roof and siding. We prune for structure, health, and safety.",
+  "valve-packages": {
+    title: "Valve Package Installation",
+    description: "Comprehensive valve solutions including control systems and automation integration. Our team installs control valves, safety valve systems, and integrates automation for process control, safety systems, and flow regulation across all types of commercial and industrial facilities.",
+    features: ["Control valve installation", "Safety valve systems", "Automation integration", "System calibration", "Regular maintenance"],
   },
-  "stump-grinding": {
-    title: "Stump Grinding",
-    description: "Stumps left behind after tree removal block your lawn and invite insects. Our stump grinding removes the root system completely so you reclaim your space. We grind below grade and clean up debris—your yard is ready to replant right after.",
+  "heat-exchangers": {
+    title: "CHW Pumps & Heat Exchanger Installation",
+    description: "Expert installation and maintenance of heat transfer systems for optimal energy efficiency. We handle heat exchanger installation, pump selection & setup, performance optimization, energy efficiency analysis, and preventive maintenance for HVAC systems, process cooling, and district cooling applications.",
+    features: ["Heat exchanger installation", "Pump selection & setup", "Performance optimization", "Energy efficiency analysis", "Preventive maintenance"],
   },
-  "emergency": {
-    title: "Emergency Tree Services",
-    description: "Storms happen without notice. Fallen trees, hanging limbs, and split trunks create hazards that can't wait. We respond fast to emergency calls, clearing streets, restoring access, and preventing further damage. Contact us immediately if a tree threatens your property.",
+  "ductwork": {
+    title: "Ductwork Systems",
+    description: "Professional ductwork installation including kitchen extract and ventilation systems. We design and install complete duct systems for commercial and industrial buildings, ensuring proper air distribution, ventilation, and extraction for kitchens, laboratories, and general building HVAC.",
+    features: ["Extract duct installation", "Kitchen ventilation systems", "General ventilation", "Duct fabrication", "System balancing"],
   },
-  "land-clearing": {
-    title: "Land Clearing",
-    description: "Complete lot clearing for construction, development, or property improvement. We remove trees, brush, and debris efficiently, leaving your site clean and ready for the next phase. Our heavy equipment handles projects of any scale.",
-  },
-  "grading": {
-    title: "Grading",
-    description: "Proper grading ensures good drainage and a stable foundation for construction. We reshape terrain to direct water flow, prevent erosion, and prepare sites for building. Professional grading for residential and commercial projects.",
-  },
-  "drainage": {
-    title: "Drainage",
-    description: "Complete drainage system design and installation to protect your property from water damage. French drains, channel drains, and comprehensive water management solutions tailored to your property's specific needs.",
-  },
-  "erosion-control": {
-    title: "Erosion & Sediment Control",
-    description: "E&S control installation to protect your property and meet regulatory requirements. We install silt fences, sediment basins, check dams, and other erosion control measures for construction sites and developed properties.",
-  },
-  "basin-remediation": {
-    title: "Basin Remediation",
-    description: "Stormwater basin repair and remediation services to restore proper function. We clean, reshape, and repair detention and retention basins to ensure they manage stormwater effectively and meet compliance standards.",
+  "mep-services": {
+    title: "Complete MEP Services",
+    description: "Complete mechanical, electrical, and plumbing services for commercial projects. From design-build to installation and maintenance, we provide comprehensive MEP solutions under one roof, managing every aspect of your building's mechanical infrastructure.",
+    features: ["Design-build services", "Mechanical installation", "Electrical systems", "Plumbing solutions", "Ongoing maintenance"],
   },
 };
 
 const ServiceDetail = () => {
   const { slug } = useParams();
-  const service = serviceData[slug || ""] || { title: "Service", description: "Professional service in Lancaster County, PA." };
+  const service = serviceData[slug || ""] || { title: "Service", description: "Professional MEP & HVAC service.", features: [] };
 
   return (
     <div>
       <HeroSection
-        title={`${service.title} in Lancaster County, PA`}
-        subtitle={`Professional ${service.title.toLowerCase()} services for Lancaster County and surrounding areas.`}
-        backgroundImage={treeServiceHero}
+        title={service.title}
+        subtitle={`Professional ${service.title.toLowerCase()} services across the UAE.`}
+        backgroundImage={heroBg}
       />
 
       <section className="section-padding">
@@ -65,19 +54,28 @@ const ServiceDetail = () => {
           <p className="text-muted-foreground mb-8 text-lg leading-relaxed">{service.description}</p>
 
           <div className="bg-secondary rounded-lg p-8 mb-8">
-            <h3 className="font-heading text-xl font-bold uppercase text-foreground mb-4">Why Choose BH Tree Service?</h3>
+            <h3 className="font-heading text-xl font-bold uppercase text-foreground mb-4">Key Features</h3>
             <ul className="space-y-3 text-muted-foreground">
-              <li className="flex items-start gap-2"><span className="text-primary font-bold">✓</span> 30+ years of industry experience</li>
-              <li className="flex items-start gap-2"><span className="text-primary font-bold">✓</span> Fully insured and licensed</li>
-              <li className="flex items-start gap-2"><span className="text-primary font-bold">✓</span> Free estimates on all projects</li>
-              <li className="flex items-start gap-2"><span className="text-primary font-bold">✓</span> Fast, professional service</li>
-              <li className="flex items-start gap-2"><span className="text-primary font-bold">✓</span> Complete site cleanup included</li>
+              {service.features.map((f, i) => (
+                <li key={i} className="flex items-start gap-2"><span className="text-primary font-bold">✓</span> {f}</li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="bg-secondary rounded-lg p-8 mb-8">
+            <h3 className="font-heading text-xl font-bold uppercase text-foreground mb-4">Why Choose SplendorUAE?</h3>
+            <ul className="space-y-3 text-muted-foreground">
+              <li className="flex items-start gap-2"><span className="text-primary font-bold">✓</span> 15+ years of industry experience</li>
+              <li className="flex items-start gap-2"><span className="text-primary font-bold">✓</span> Licensed and certified engineers</li>
+              <li className="flex items-start gap-2"><span className="text-primary font-bold">✓</span> 500+ successful projects completed</li>
+              <li className="flex items-start gap-2"><span className="text-primary font-bold">✓</span> ISO certified quality standards</li>
+              <li className="flex items-start gap-2"><span className="text-primary font-bold">✓</span> Comprehensive warranty and support</li>
             </ul>
           </div>
 
           <div className="text-center">
             <Link to="/contact" className="inline-block bg-primary text-primary-foreground font-heading text-lg font-semibold px-10 py-4 rounded-md hover:opacity-90 transition-opacity uppercase tracking-wide">
-              Get a Free Quote
+              Get a Free Consultation
             </Link>
           </div>
         </div>
