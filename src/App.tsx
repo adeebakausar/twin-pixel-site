@@ -14,6 +14,9 @@ import ServiceAreaDetail from "./pages/ServiceAreaDetail.tsx";
 import ServiceDetail from "./pages/ServiceDetail.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import ReviewUs from "./pages/ReviewUs.tsx";
+import ThankYou from "./pages/ThankYou.tsx";
+import Terms from "./pages/Terms.tsx";
+import PrivacyPolicy from "./pages/PrivacyPolicy.tsx";
 import ScrollToTop from "./components/ScrollToTop.tsx";
 
 const queryClient = new QueryClient();
