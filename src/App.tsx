@@ -14,6 +14,9 @@ import ServiceAreaDetail from "./pages/ServiceAreaDetail.tsx";
 import ServiceDetail from "./pages/ServiceDetail.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import ReviewUs from "./pages/ReviewUs.tsx";
+import ThankYou from "./pages/ThankYou.tsx";
+import Terms from "./pages/Terms.tsx";
+import PrivacyPolicy from "./pages/PrivacyPolicy.tsx";
 import ScrollToTop from "./components/ScrollToTop.tsx";
 
 const queryClient = new QueryClient();
@@ -36,6 +39,9 @@ const App = () => (
             <Route path="/service-areas" element={<ServiceAreas />} />
             <Route path="/service-areas/:area" element={<ServiceAreaDetail />} />
             <Route path="/review-us" element={<ReviewUs />} />
+            <Route path="/thank-you" element={<ThankYou />} />
+            <Route path="/terms" element={<Terms />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>

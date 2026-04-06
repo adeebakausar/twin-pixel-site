@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import logo from "@/assets/logo.png";
 
 const QuoteForm = () => {
+  const navigate = useNavigate();
   const [form, setForm] = useState({ name: "", phone: "", message: "", agreed: false });
   const [submitting, setSubmitting] = useState(false);
 
@@ -25,8 +27,8 @@ const QuoteForm = () => {
         }
       );
       console.log("Webhook response status:", response.status);
-      alert("Thank you! We'll get back to you soon.");
       setForm({ name: "", phone: "", message: "", agreed: false });
+      navigate("/thank-you");
     } catch (err) {
       console.error("Webhook error:", err);
       alert("Something went wrong. Please try again or call us directly.");
@@ -85,11 +87,11 @@ const QuoteForm = () => {
             className="mt-1 accent-primary"
           />
           <p className="text-xs text-background/80">
-            I agree to the <span className="text-primary font-semibold">Terms & Conditions</span> provided by the company. By providing my phone number, I agree to receive text messages from the business.
+            I agree to the <Link to="/terms" className="text-primary font-semibold hover:underline">Terms & Conditions</Link> provided by the company. By providing my phone number, I agree to receive text messages from the business.
           </p>
         </div>
         <p className="text-xs text-background/60">
-          We respect your privacy - learn how we handle your data in our <span className="text-primary font-semibold">Privacy Policy</span>.
+          We respect your privacy - learn how we handle your data in our <Link to="/privacy-policy" className="text-primary font-semibold hover:underline">Privacy Policy</Link>.
         </p>
         <button
           type="submit"
