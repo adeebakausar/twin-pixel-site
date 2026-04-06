@@ -5,39 +5,34 @@ import logo from "@/assets/logo.png";
 
 const services = [
   {
-    label: "Tree Service",
-    path: "/tree-service",
-    children: [
-      { label: "Tree Removal", path: "/tree-service/tree-removal" },
-      { label: "Logging", path: "/tree-service/logging" },
-      { label: "Tree Pruning", path: "/tree-service/tree-pruning" },
-      { label: "Stump Grinding", path: "/tree-service/stump-grinding" },
-      { label: "Emergency Tree Services", path: "/tree-service/emergency" },
-    ],
+    label: "CHW Piping Systems",
+    path: "/services/chw-piping",
   },
   {
-    label: "Land Clearing Service",
-    path: "/land-clearing",
-    children: [
-      { label: "Land Clearing", path: "/land-clearing/land-clearing" },
-      { label: "Grading", path: "/land-clearing/grading" },
-    ],
+    label: "HVAC Installation",
+    path: "/services/hvac-installation",
   },
   {
-    label: "Drainage Service",
-    path: "/drainage",
-    children: [
-      { label: "Drainage", path: "/drainage/drainage" },
-      { label: "Erosion & Sediment Control", path: "/drainage/erosion-control" },
-      { label: "Basin Remediation", path: "/drainage/basin-remediation" },
-    ],
+    label: "Valve Packages",
+    path: "/services/valve-packages",
+  },
+  {
+    label: "Heat Exchangers",
+    path: "/services/heat-exchangers",
+  },
+  {
+    label: "Ductwork Systems",
+    path: "/services/ductwork",
+  },
+  {
+    label: "MEP Services",
+    path: "/services/mep-services",
   },
 ];
 
 const serviceAreas = [
-  "Berks County", "Bucks County", "Carbon County", "Chester County",
-  "Delaware County", "Lancaster County", "Lebanon County", "Lehigh County",
-  "Monroe County", "Montgomery County", "Northampton County", "Schuylkill County",
+  "Dubai", "Abu Dhabi", "Sharjah", "Ajman",
+  "Ras Al Khaimah", "Fujairah", "Umm Al Quwain",
 ];
 
 const Navbar = () => {
@@ -49,13 +44,17 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-foreground/95 backdrop-blur-sm">
       <div className="container-wide flex items-center justify-between px-4 py-3 lg:px-8">
         <Link to="/" className="flex-shrink-0">
-          <img src={logo} alt="BH Tree Service" className="h-12 w-auto" />
+          <img src={logo} alt="SplendorUAE" className="h-12 w-auto" />
         </Link>
 
         {/* Desktop Nav */}
         <div className="hidden lg:flex items-center gap-6">
           <Link to="/" className="font-body text-sm font-semibold text-background hover:text-primary transition-colors">
             Home
+          </Link>
+
+          <Link to="/about" className="font-body text-sm font-semibold text-background hover:text-primary transition-colors">
+            About Us
           </Link>
 
           {/* Services Dropdown */}
@@ -69,34 +68,20 @@ const Navbar = () => {
             {openDropdown === "services" && (
               <div className="absolute top-full left-0 bg-background rounded-md shadow-xl py-2 min-w-[220px]">
                 {services.map((s) => (
-                  <div key={s.path} className="group/sub relative">
-                    <Link
-                      to={s.path}
-                      className="block px-4 py-2 text-sm font-semibold text-foreground hover:bg-primary hover:text-primary-foreground transition-colors"
-                    >
-                      {s.label}
-                    </Link>
-                    {s.children && (
-                      <div className="pl-4">
-                        {s.children.map((c) => (
-                          <Link
-                            key={c.path}
-                            to={c.path}
-                            className="block px-4 py-1.5 text-xs text-muted-foreground hover:text-primary transition-colors"
-                          >
-                            {c.label}
-                          </Link>
-                        ))}
-                      </div>
-                    )}
-                  </div>
+                  <Link
+                    key={s.path}
+                    to={s.path}
+                    className="block px-4 py-2 text-sm font-semibold text-foreground hover:bg-primary hover:text-primary-foreground transition-colors"
+                  >
+                    {s.label}
+                  </Link>
                 ))}
               </div>
             )}
           </div>
 
-          <Link to="/tree-service/tree-removal" className="font-body text-sm font-semibold text-background hover:text-primary transition-colors">
-            Tree Removal
+          <Link to="/gallery" className="font-body text-sm font-semibold text-background hover:text-primary transition-colors">
+            Projects
           </Link>
 
           {/* Service Areas Dropdown */}
@@ -108,44 +93,31 @@ const Navbar = () => {
               Service Areas <ChevronDown className="w-4 h-4" />
             </button>
             {openDropdown === "areas" && (
-              <div className="absolute top-full left-0 bg-background rounded-md shadow-xl py-2 min-w-[220px] grid grid-cols-2 gap-x-2">
+              <div className="absolute top-full left-0 bg-background rounded-md shadow-xl py-2 min-w-[220px]">
                 {serviceAreas.map((area) => (
                   <Link
                     key={area}
                     to={`/service-areas/${area.toLowerCase().replace(/ /g, "-")}`}
-                    className="block px-4 py-1.5 text-xs text-foreground hover:text-primary transition-colors"
+                    className="block px-4 py-1.5 text-sm text-foreground hover:text-primary transition-colors"
                   >
-                    {area}, PA
+                    {area}
                   </Link>
                 ))}
               </div>
             )}
           </div>
 
-          {/* About Us Dropdown */}
-          <div className="relative group"
-            onMouseEnter={() => setOpenDropdown("about")}
-            onMouseLeave={() => setOpenDropdown(null)}
-          >
-            <button className="font-body text-sm font-semibold text-background hover:text-primary transition-colors flex items-center gap-1">
-              About Us <ChevronDown className="w-4 h-4" />
-            </button>
-            {openDropdown === "about" && (
-              <div className="absolute top-full right-0 bg-background rounded-md shadow-xl py-2 min-w-[180px]">
-                <Link to="/about" className="block px-4 py-2 text-sm text-foreground hover:text-primary transition-colors">About</Link>
-                <Link to="/gallery" className="block px-4 py-2 text-sm text-foreground hover:text-primary transition-colors">Projects</Link>
-                <Link to="/contact" className="block px-4 py-2 text-sm text-foreground hover:text-primary transition-colors">Contact Us</Link>
-              </div>
-            )}
-          </div>
+          <Link to="/contact" className="font-body text-sm font-semibold text-background hover:text-primary transition-colors">
+            Contact
+          </Link>
         </div>
 
         <div className="hidden lg:flex items-center gap-3">
           <Link to="/contact" className="bg-primary text-primary-foreground font-heading text-sm font-semibold px-5 py-2.5 rounded-md hover:opacity-90 transition-opacity uppercase tracking-wide">
-            Get Free Quote
+            Get Free Consultation
           </Link>
-          <a href="tel:16103245372" className="flex items-center gap-2 border border-background/30 text-background font-body text-sm font-semibold px-4 py-2.5 rounded-md hover:bg-background/10 transition-colors">
-            <Phone className="w-4 h-4" /> (610) 324-5372
+          <a href="tel:+971501234567" className="flex items-center gap-2 border border-background/30 text-background font-body text-sm font-semibold px-4 py-2.5 rounded-md hover:bg-background/10 transition-colors">
+            <Phone className="w-4 h-4" /> +971 50 123 4567
           </a>
         </div>
 
@@ -159,22 +131,17 @@ const Navbar = () => {
       {mobileOpen && (
         <div className="lg:hidden bg-foreground border-t border-background/10 px-4 py-4 space-y-3 max-h-[80vh] overflow-y-auto">
           <Link to="/" onClick={() => setMobileOpen(false)} className="block text-background font-semibold py-2">Home</Link>
+          <Link to="/about" onClick={() => setMobileOpen(false)} className="block text-background font-semibold py-2">About Us</Link>
           {services.map((s) => (
-            <div key={s.path}>
-              <Link to={s.path} onClick={() => setMobileOpen(false)} className="block text-background font-semibold py-2">{s.label}</Link>
-              {s.children?.map((c) => (
-                <Link key={c.path} to={c.path} onClick={() => setMobileOpen(false)} className="block text-background/70 text-sm pl-4 py-1">{c.label}</Link>
-              ))}
-            </div>
+            <Link key={s.path} to={s.path} onClick={() => setMobileOpen(false)} className="block text-background/70 text-sm pl-4 py-1">{s.label}</Link>
           ))}
-          <Link to="/about" onClick={() => setMobileOpen(false)} className="block text-background font-semibold py-2">About</Link>
           <Link to="/gallery" onClick={() => setMobileOpen(false)} className="block text-background font-semibold py-2">Projects</Link>
-          <Link to="/contact" onClick={() => setMobileOpen(false)} className="block text-background font-semibold py-2">Contact Us</Link>
+          <Link to="/contact" onClick={() => setMobileOpen(false)} className="block text-background font-semibold py-2">Contact</Link>
           <Link to="/contact" onClick={() => setMobileOpen(false)} className="block bg-primary text-primary-foreground text-center font-heading font-semibold px-5 py-3 rounded-md uppercase tracking-wide">
-            Get Free Quote
+            Get Free Consultation
           </Link>
-          <a href="tel:16103245372" className="flex items-center justify-center gap-2 text-background font-semibold py-2">
-            <Phone className="w-4 h-4" /> (610) 324-5372
+          <a href="tel:+971501234567" className="flex items-center justify-center gap-2 text-background font-semibold py-2">
+            <Phone className="w-4 h-4" /> +971 50 123 4567
           </a>
         </div>
       )}
